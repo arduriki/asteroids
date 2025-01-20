@@ -18,3 +18,15 @@ class CircleShape(pygame.sprite.Sprite):
 
     def update(self, dt):
         pass
+
+    def check_collision(self, circle):
+        """
+        Detecting a collision between two circles is simple:
+
+        We calculate the distance between the center of the two circles, let's call it distance
+        Let's call the radius of one circle r1, and the radius of the other circle r2
+        If distance is less than or equal to r1 + r2, the circles are colliding. If not, they aren't.
+        """
+        distance = self.position.distance_to(circle.position)
+        combined_radii = self.radius + circle.radius
+        return distance <= combined_radii
